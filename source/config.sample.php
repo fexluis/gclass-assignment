@@ -7,40 +7,83 @@ $conf['scopes'] = [
   Google_Service_Classroom::CLASSROOM_ANNOUNCEMENTS,
 ];
 
-$conf['app_name'] = 'My Homeschool App';
-
 $conf['credentials_path'] = DATA_DIR . '/credentials.json';
 $conf['token_path'] = DATA_DIR . '/token.json';
 
-$conf['course_id'] = 14902692061; // The real one
+##############################################################################
+## Personalized setting start here. ##
+##############################################################################
+
+// What you tell google the name of your app is. Probably doesn't matter much.
+$conf['app_name'] = 'My Homeschool App';
+
+// This ID must be replaced with your actual corse ID. Make sure this is quoted and a string, not a raw number.
+$conf['course_id'] = '1234567890';
+
+##############################################################################
+# Sample
+#
+# The following sample is written to demonstrate a group of 3 students who
+# largely have different assignments but do have some shared. It is completely
+# contrived to demonstrate ways this system can be used.
+##############################################################################
+
+// Define student ids here to make things easier.
+// Make sure they are quoted strings, not raw numbers.
+$pat      = '12345678901234567890';
+$chris    = '12345678901234567891';
+$taylor   = '12345678901234567892';
+
 $conf['students'] = [
-  'Charlotte' => [
-    'id' => '103365305463898063479',
+  'Pat' => [
+    'id' => $pat,
     'subjects' => [
       'Math' => [
-        'title' => 'BA 5B',
+        'title' => 'Beast Academy 5B',
         'days' => [0, 1, 2, 3, 4],
       ],
       'Science' => [
-        'title' => 'RSO Bio 2',
+        'title' => 'Real Science Odyssey Bio',
         'days' => [0, 1, 4],
       ],
     ],
   ],
-  'Reuben' => [
-    'id' => '109130233383689384944',
+  'Chris' => [
+    'id' => $chris,
     'subjects' => [
       'Math' => [
-        'title' => 'BA 3C',
+        'title' => 'Beast Academy 3C',
         'days' => [0, 1, 2, 3, 4],
       ],
       'Science' => [
-        'title' => 'RSO E&S',
+        'title' => 'Real Science Odyssey Earth & Space',
         'days' => [0, 1],
       ],
     ],
   ],
-  'Shared' => [
+  'Taylor' => [
+    'id' => $taylor,
+    'subjects' => [
+      'Math' => [
+        'title' => 'Art of Problem Solving Algebra',
+        'days' => [0, 1, 2, 3, 4],
+      ],
+      'Science' => [
+        'title' => 'BFSU',
+        'days' => [0, 1],
+      ],
+    ],
+  ],
+  'Pat and Chris' => [
+    'id' => [$pat, $chris],
+    'subjects' => [
+      'History' => [
+        'title' => 'History Odyssey Middle Ages',
+        'days' => [0, 2, 4],
+      ],
+    ],
+  ],
+  'Whole Class' => [
     'subjects' => [
       'Typing' => [
         'title' => 'typing.com 20 minutes',

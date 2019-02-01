@@ -20,7 +20,11 @@ if ($input && ($changed_date = strtotime($input))) {
 
 // Collect all of the assignments as specified by configuration.
 foreach ($conf['students'] as $student_name => $student_info) {
-  $students = !empty($student_info['id']) ? [$student_info['id']] : NULL;
+  $students = NULL;
+  // Make sure the id is an array.
+  if (!empty($student_info['id'])) {
+    $students = is_array($student_info['id']) ? $student_info['id'] : [$student_info['id']];
+  }
   print "$student_name:\n";
   foreach ($student_info['subjects'] as $subject_name => $subject_info) {
     foreach ($subject_info['days'] as $day) {
