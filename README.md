@@ -22,7 +22,7 @@ I only need to support a single course, so at the moment my assignment creator o
 Go through the PHP Quickstart for classroom API here: https://developers.google.com/classroom/quickstart/php
  * Enable the API
  * Use composer to create the vendor directory. This should be a sibling of the source directory.
- * cut and paste their quickstart sample into quickstart.php and run it. Move the credentials.json and token.json files that it creates into the data directory. Afterward you may discard the quickstart.php unless you ned to generate tokens again.
+ * cut and paste the credentials.json into `data/credentials.json`
 
 ### Fetch IDs
 * Copy config.sample.php to config.php in the source directory.
@@ -105,3 +105,9 @@ Created assignment Typing: typing.com 20 minutes
 Created assignment Art: 30 minutes
 
 ```
+
+## TODO
+ * [ ] The documentation on getting credentials.json needs to be improved. I need to actually go through that whole process a second time to make sure it's correct.
+ * [ ] Possible support for multiple classroom classes?
+ * [ ] A configurator that can take you through some of these steps with less needing to write the config file.
+ * [ ] config.php should be split up and stored in the data directory. Potentially use .json for config instead of a PHP file.
