@@ -28,7 +28,7 @@ foreach ($conf['students'] as $student_name => $student_info) {
   print "$student_name:\n";
   foreach ($student_info['subjects'] as $subject_name => $subject_info) {
     foreach ($subject_info['days'] as $day) {
-      print "  Day $day: $subject_name: $subject_info[title]: ";
+      print "  " . date('l', $start_date + $day * 86400) . ": $subject_name: $subject_info[title]: ";
       $title = trim(fgets(STDIN));
       $day_to_use = $start_date + ($day * 86400);
 
