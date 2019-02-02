@@ -15,6 +15,14 @@ if (empty($conf[$group]) || !is_array($conf[$group])) {
   print "No assignment group named \"$group\"\n";
   exit(1);
 }
+
+if (empty($conf[$group]['course_id'])) {
+  print "No course id specified for \"$group\"\n";
+  exit(1);
+}
+
+$course_id = $conf[$group]['course_id'];
+
 // Get the starting date.
 $start_date = strtotime("next monday");
 print "Start date: [" . date('Y-m-d', $start_date) . "]: ";
@@ -26,6 +34,11 @@ if ($input && ($changed_date = strtotime($input))) {
 
 // Collect all of the assignments as specified by configuration.
 foreach ($conf[$group] as $student_name => $student_info) {
+  // Skip the course id and some invalid configuration.
+  if ($student_name == 'course_id' || !is_array($student_info)) {
+    continue;
+  }
+
   $students = NULL;
   // Make sure the id is an array.
   if (!empty($student_info['id'])) {
@@ -49,7 +62,7 @@ foreach ($conf[$group] as $student_name => $student_info) {
         $title = "$subject_name: $subject_info[title]: $title";
       }
       $assignments[] = [
-        $conf['course_id'],
+        $course_id,
         $title,
         ['year' => date('Y', $day_to_use), 'month' => date('m', $day_to_use), 'day' => date('d', $day_to_use)],
         $students

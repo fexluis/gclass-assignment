@@ -27,11 +27,14 @@ Go through the PHP Quickstart for classroom API here: https://developers.google.
 ### Fetch IDs
 * Copy config.sample.php to config.php in the source directory.
 * `php getids.php`
-* Copy the course ID you want to use into the `config.php` file as `$conf['course_id']`.
-* Note the IDs of the students, you will need these to set up the assignment base.
+* Note the course ID and the IDs of the students, you will need these to set up the assignment base.
 
 ### Configure courses and student signups
-`$conf['students']` contains a nested array. The key of the top level array is the name of the student (which will be printed as feedback, so capitalize appropriately). This can actually be multiple students, as shown in the example.
+`$conf['students']` contains a nested array. 
+
+The first key in the array should be `'course_id'` and it should be set to the course ID identified by `getids.php` above.
+
+The other keys of the top level array are the name or names of the student(s) (which will be printed as feedback, so capitalize appropriately). This can actually be multiple students, as shown in the example.
  
  The student data array contains one key and one optional key. The optional `id` array can be left out if providing data to the entire class. Otherwise, provide either a single id or an array of IDs if using multiple students.
  
@@ -113,6 +116,6 @@ Created assignment Art: 30 minutes
 
 ## TODO
  * [ ] The documentation on getting credentials.json needs to be improved. I need to actually go through that whole process a second time to make sure it's correct.
- * [ ] Possible support for multiple classroom classes?
+ * [x] Support for multiple classroom classes.
  * [ ] A configurator that can take you through some of these steps with less needing to write the config file.
  * [ ] config.php should be split up and stored in the data directory. Potentially use .json for config instead of a PHP file.

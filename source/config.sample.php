@@ -17,9 +17,6 @@ $conf['token_path'] = DATA_DIR . '/token.json';
 // What you tell google the name of your app is. Probably doesn't matter much.
 $conf['app_name'] = 'My Homeschool App';
 
-// This ID must be replaced with your actual corse ID. Make sure this is quoted and a string, not a raw number.
-$conf['course_id'] = '1234567890';
-
 ##############################################################################
 # Sample
 #
@@ -36,6 +33,8 @@ $taylor   = '12345678901234567892';
 
 // 'students' is the default array of assignments.
 $conf['students'] = [
+  // This ID must be replaced with your actual course ID. Make sure this is quoted and a string, not a raw number.
+  'course_id' => '1234567890',
   'Pat' => [
     'id' => $pat,
     'subjects' => [
@@ -103,6 +102,8 @@ $conf['students'] = [
 // This is an example of an additional assignment group, useful for adding ad hoc
 // or irregular assignments separately.
 $conf['gymnastics'] = [
+  // This ID must be replaced with your actual course ID. Make sure this is quoted and a string, not a raw number.
+  'course_id' => '1234567890',
   'Chris' => [
     'id' => $chris,
     'subjects' => [
