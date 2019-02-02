@@ -117,5 +117,5 @@ Created assignment Art: 30 minutes
 ## TODO
  * [ ] The documentation on getting credentials.json needs to be improved. I need to actually go through that whole process a second time to make sure it's correct.
  * [x] Support for multiple classroom classes.
- * [ ] A configurator that can take you through some of these steps with less needing to write the config file.
+ * [ ] A configurator that can take you through some of these steps with less needing to write the config file. getids.php should write the courses and ids into a courses.json file. assignments.json files could be created with a configurator.
  * [ ] config.php should be split up and stored in the data directory. Potentially use .json for config instead of a PHP file.
