@@ -40,10 +40,15 @@ Go through the PHP Quickstart for classroom API here: https://developers.google.
  * `days`: A 0 based array of which days to use. `[0, 1, 2, 3, 4]` will create the assignment for all 5 days of the week. `[0, 2, 4]` will create the assignment Monday, Wednesday and Friday. `[1, 3]` will create the assignment Tuesday and Thursday.
  * `use default`: By default, if the user presses enter and puts in no data for an assignment, it will be skipped. That way if you vary how much of one particular subject you use in a week, simply enter the days you want. However, if you don't want to have to enter anything and will always have a simple assignment on the given days, add `'use default' => TRUE` to the array, and pressing enter will use the assignment anyway. For example, "Art time" doesn't need description.
  * See config.sample.json to see how this works in practice.
+ 
+### Configure additional ad hoc groups
+By adding any arbitrary key to $conf, you can create additional groupings that can be created. This is useful for irregular assigments that can be created in addition to the primary group but either less often or on a temporary basis.
 
 ## Creating assignments
 
-Run `php assignments.php`. It will default the date to the next Monday, but you can manually change the date here if you want to work further in advance. Here is sample output from my personal config. Note it's hard to see the user input, in this format, but where you see page numbers, that was directly typed input. The rest was created from configuration.
+Run `php assignments.php`. If you do not specify an argument, it will use the default `students` group. If you add an argument, it will read `$conf[$argument]` to run the group. For example, `php assignments.php gymnastics` will attempt to create the assignments for `$conf['gymnastics']`. 
+
+It will default the date to the soonest Monday, but you can manually change the date here if you want to work further in advance. Here is sample output from my personal config. Note it's hard to see the user input, in this format, but where you see page numbers, that was directly typed input. The rest was created from configuration.
 
 ```
 [merlin@maelstrom classroom]$ php assigments.php

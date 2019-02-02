@@ -34,6 +34,7 @@ $pat      = '12345678901234567890';
 $chris    = '12345678901234567891';
 $taylor   = '12345678901234567892';
 
+// 'students' is the default array of assignments.
 $conf['students'] = [
   'Pat' => [
     'id' => $pat,
@@ -96,6 +97,21 @@ $conf['students'] = [
         'use default' => TRUE,
       ]
     ]
+  ]
+];
+
+// This is an example of an additional assignment group, useful for adding ad hoc
+// or irregular assignments separately.
+$conf['gymnastics'] = [
+  'Chris' => [
+    'id' => $chris,
+    'subjects' => [
+      'Gymnastics' => [
+        'title' => '20 minutes',
+        'days' => [1, 3],
+        'use default' => TRUE,
+      ],
+    ],
   ]
 ];
 

@@ -9,6 +9,12 @@ require_once 'source/bootstrap.php';
 
 $assignments = [];
 
+// Collect the assignment group to use from command line args.
+$group = !empty($_SERVER['argv'][1]) ? $_SERVER['argv'][1] : 'students';
+if (empty($conf[$group]) || !is_array($conf[$group])) {
+  print "No assignment group named \"$group\"\n";
+  exit(1);
+}
 // Get the starting date.
 $start_date = strtotime("next monday");
 print "Start date: [" . date('Y-m-d', $start_date) . "]: ";
@@ -19,7 +25,7 @@ if ($input && ($changed_date = strtotime($input))) {
 }
 
 // Collect all of the assignments as specified by configuration.
-foreach ($conf['students'] as $student_name => $student_info) {
+foreach ($conf[$group] as $student_name => $student_info) {
   $students = NULL;
   // Make sure the id is an array.
   if (!empty($student_info['id'])) {
